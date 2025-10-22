@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 export const Playground = () => {
   const [email, setEmail] = useState("");
+  useEffect(() => {
+    console.log("igual");
+  }, [email === "amora"]);
   const handleEntrar = () => {
     console.log(email);
   };
+  const submitForm = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+  };
   return (
     <>
-      <form>
+      <form onSubmit={submitForm}>
         <label htmlFor="">
           <span>email</span>
+          endereco
           <input
             value={email}
             placeholder="exemplo@email.com"
@@ -21,9 +30,7 @@ export const Playground = () => {
           <span>password</span>
           <input type="password" />
         </label>
-        <button type="button" onClick={handleEntrar}>
-          Entrar
-        </button>
+        <button type="submit">Entrar</button>
       </form>
     </>
   );

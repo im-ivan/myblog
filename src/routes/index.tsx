@@ -4,7 +4,11 @@ import { Playground } from "../pages/playground/Playground";
 import { PageNotFound } from "../pages/page-not-found/PageNotFound";
 export const AppRoutes = () => {
   const handleClick = () => {
-    alert("You clicked!");
+    if (window.confirm("abc")) {
+      console.log("ok");
+    } else {
+      console.log("cancel");
+    }
   };
 
   return (
